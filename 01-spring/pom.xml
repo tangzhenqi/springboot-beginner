@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.spring</groupId>
+    <artifactId>spring-parent</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>spring_01_quickstart</module>
+        <module>spring_02_base_config</module>
+        <module>spring_03_bean_instance</module>
+        <module>spring_04_bean_lifecycle</module>
+        <module>spring_05_di_set</module>
+        <module>spring_06_di_constructor</module>
+        <module>spring_07_di_autoware</module>
+        <module>spring_08_di_collection</module>
+        <module>spring_09_datasource</module>
+        <module>spring_10_container</module>
+        <module>spring_11_annotation_bean</module>
+        <module>spring_12_annotation_bean_manager</module>
+        <module>spring_13_annotation_di</module>
+        <module>spring_14_annotation_third_bean_manager</module>
+        <module>spring_15_spring_mybatis</module>
+        <module>spring_16_spring_junit</module>
+        <module>spring_17_aop_demo</module>
+        <module>spring_18_aop_quickstart</module>
+        <module>spring_19_aop_pointcut</module>
+        <module>spring_20_aop_advice_type</module>
+        <module>spring_21_case_interface_run_speed</module>
+        <module>spring_22_aop_advice_data</module>
+        <module>spring_23_case_handle_password</module>
+        <module>spring_24_case_transfer</module>
+        <module>spring_25_case_transfer_log</module>
+    </modules>
+</project>

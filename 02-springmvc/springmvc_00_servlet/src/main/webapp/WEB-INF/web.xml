@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+                             http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+
+    <display-name>Servlet详细案例</display-name>
+
+    <!--
+        版本必须是3.0及以上，否则服务器不会扫描 @WebServlet / @WebFilter / @WebListener 注解。
+        本文件与注解方式并存：XmlConfigServlet走xml配置，其余组件走注解配置。
+    -->
+
+    <!-- ========== Servlet的xml配置方式，与@WebServlet等价 ========== -->
+    <servlet>
+        <!-- servlet-name在整个web.xml中唯一，用于与servlet-mapping关联 -->
+        <servlet-name>xmlConfigServlet</servlet-name>
+        <servlet-class>com.springmvc.servlet.XmlConfigServlet</servlet-class>
+        <!-- 初始化参数，通过 getServletConfig().getInitParameter("desc") 读取 -->
+        <init-param>
+            <param-name>desc</param-name>
+            <param-value>我是web.xml中配置的初始化参数</param-value>
+        </init-param>
+        <!-- 大于等于0表示服务器启动时就创建该Servlet，值越小启动越靠前 -->
+        <load-on-startup>2</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>xmlConfigServlet</servlet-name>
+        <!--
+            url-pattern的四种写法（优先级由高到低）：
+            1.精确匹配  /xmlServlet
+            2.目录匹配  /user/*
+            3.扩展名匹配 *.do        （不能以/开头）
+            4.任意匹配  /  或  /*     （springmvc的DispatcherServlet用的就是 / ）
+        -->
+        <url-pattern>/xmlServlet</url-pattern>
+    </servlet-mapping>
+
+    <!-- ========== 会话超时时间，单位分钟，默认30 ========== -->
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+
+    <!-- ========== 欢迎页：直接访问 http://localhost/ 时展示 ========== -->
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <!-- ========== 全局错误页，避免把异常堆栈暴露给用户 ========== -->
+    <error-page>
+        <error-code>404</error-code>
+        <location>/WEB-INF/pages/error.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/WEB-INF/pages/error.jsp</location>
+    </error-page>
+    <error-page>
+        <exception-type>java.lang.Exception</exception-type>
+        <location>/WEB-INF/pages/error.jsp</location>
+    </error-page>
+
+</web-app>

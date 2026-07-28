@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--name:为bean指定别名，别名可以有多个，使用逗号，分号，空格进行分隔-->
+    <!--
+        别名(name/alias)和id在容器内处于同一命名空间，所有id和name都不能重复，冲突时：
+        1.同一个xml文件内冲突：启动直接报错(fail-fast)，如"Bean name 'xxx' is already used in this <beans> element"，容器起不来；
+        2.跨文件/后加载冲突：默认"后加载的BeanDefinition覆盖先加载的"，不报错但很隐蔽。
+          Spring Boot 2.1起默认禁止覆盖，会报"A bean with that name has already been defined"，
+          需显式配置 spring.main.allow-bean-definition-overriding=true 才允许覆盖。
+        实践建议：保证所有id和别名在整个容器里唯一，出现冲突就改名，别依赖覆盖机制。
+    -->
+    <bean id="bookService" name="service service4 bookEbi" class="com.spring.service.impl.BookServiceImpl">
+        <property name="bookDao" ref="bookDao"/>
+    </bean>
+
+    <!--scope：为bean设置作用范围，可选值为单例singloton，非单例prototype-->
+    <bean id="bookDao" name="dao" class="com.spring.dao.impl.BookDaoImpl" scope="prototype"/>
+</beans>

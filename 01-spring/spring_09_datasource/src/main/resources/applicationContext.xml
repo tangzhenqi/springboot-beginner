@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+            http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context.xsd
+            ">
+<!--    管理DruidDataSource对象-->
+    <bean id="dataSource_druid" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/spring_db"/>
+        <property name="username" value="root"/>
+        <property name="password" value="root"/>
+    </bean>
+
+<!--    管理c3p0对象-->
+    <bean id="dataSource_c3p0" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="com.mysql.jdbc.Driver"/>
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/spring_db"/>
+        <property name="user" value="root"/>
+        <property name="password" value="root"/>
+        <property name="maxPoolSize" value="1000"/>
+    </bean>
+
+<!--    1.开启context命名空间-->
+<!--    2.使用context空间加载properties文件-->
+
+    <!--classpath*:*.properties  ：  设置加载当前工程类路径和当前工程所依赖的所有jar包中的所有properties文件-->
+    <context:property-placeholder location="classpath*:*.properties" system-properties-mode="NEVER"/>
+
+<!--    3.使用属性占位符${}读取properties文件中的属性-->
+<!--    说明：idea自动识别${}加载的属性值，需要手工点击才可以查阅原始书写格式-->
+    <bean class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+
+    <bean id="bookDao" class="com.spring.dao.impl.BookDaoImpl">
+        <property name="name" value="${username}"/>
+    </bean>
+
+</beans>
+
+<!--    ===== context:property-placeholder 的 location 常见写法 ===== -->
+<!--    ① 不加载系统属性(system-properties-mode="NEVER"):优先用properties里的值，避免与系统环境变量同名冲突 -->
+<!--       <context:property-placeholder location="jdbc.properties" system-properties-mode="NEVER"/> -->
+<!--    ② 加载多个properties文件:用逗号分隔 -->
+<!--       <context:property-placeholder location="jdbc.properties,msg.properties"/> -->
+<!--    ③ 加载所有properties文件:通配符 * (不含classpath，仅当前目录) -->
+<!--       <context:property-placeholder location="*.properties"/> -->
+<!--    ④ 加载properties文件【标准格式】:classpath: 前缀，从当前工程类路径加载所有properties -->
+<!--       <context:property-placeholder location="classpath:*.properties"/> -->
+<!--    ⑤ 从类路径或jar包中搜索并加载:classpath*: 前缀，含当前工程 + 所依赖jar包中的所有properties -->
+<!--       <context:property-placeholder location="classpath*:*.properties"/> -->
+<!--    ================================================================= -->
+
+

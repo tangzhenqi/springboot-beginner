@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.springmvc</groupId>
+    <artifactId>springmvc-parent</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>springmvc_00_servlet</module>
+        <module>springmvc_01_quickstart</module>
+        <module>springmvc_02_bean_load</module>
+        <module>springmvc_03_request_mapping</module>
+        <module>springmvc_04_request_param</module>
+        <module>springmvc_05_response</module>
+        <module>springmvc_06_rest</module>
+        <module>springmvc_07_rest_case</module>
+        <module>springmvc_08_ssm</module>
+        <module>springmvc_09_result</module>
+        <module>springmvc_10_exception</module>
+        <module>springmvc_11_page</module>
+        <module>springmvc_12_interceptor</module>
+    </modules>
+</project>

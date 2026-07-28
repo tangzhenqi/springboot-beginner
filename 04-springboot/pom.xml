@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.springboot</groupId>
+    <artifactId>springboot-parent</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>springboot_01_quickstart</module>
+        <module>springboot_02_base_config</module>
+        <module>springboot_03_read_data</module>
+        <module>springboot_04_profile</module>
+        <module>springboot_05_maven_and_boot_profile</module>
+        <module>springboot_06_config_file</module>
+        <module>springboot_07_test</module>
+        <module>springboot_08_mybatis</module>
+        <module>springboot_09_ssm</module>
+    </modules>
+</project>
