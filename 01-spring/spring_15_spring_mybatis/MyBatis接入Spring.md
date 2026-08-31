@@ -156,7 +156,7 @@ public class MybatisConfig {
 
 - `setDataSource(dataSource)`：形参 `DataSource dataSource` 是**方法参数注入**，Spring 自动按类型把 `JdbcConfig` 里那个 Bean 传进来。
 - `setTypeAliasesPackage(...)`：取代 XML 的 `<typeAliases>`。
-- 事务管理器不用配了，Spring 会接管。
+- `SqlSession` 的创建、使用和关闭会由 mybatis-spring 托管。不过本案例还没有声明 `DataSourceTransactionManager`，因此尚未建立跨多个 Dao 调用的 Spring 业务事务；完整事务配置会在后续转账案例中学习。
 
 **`MapperScannerConfigurer`** —— 取代 XML 的 `<mappers>`，也是整合中最关键的一步。
 
@@ -164,7 +164,7 @@ public class MybatisConfig {
 - 为每个接口**生成动态代理对象并注册成 Spring Bean**；
 - 于是 `AccountDao` 就变成了容器里的一个 Bean，可以被 `@Autowired` 注入。
 
-> 这两行背后的完整机制（执行时机、`MapperFactoryBean`、动态代理链路、常见坑）见 [MapperScannerConfigurer-原理剖析.md](MapperScannerConfigurer-原理剖析.md)。
+> 这两行背后的完整机制（执行时机、`MapperFactoryBean`、动态代理链路、常见坑）见 [MapperScannerConfigurer.md](MapperScannerConfigurer.md)。
 
 ### 配置搬迁对照表
 
@@ -333,7 +333,7 @@ Account{id=1, name='Tom', money=1000.0}
 
 整合的收益：
   没有 SqlSessionFactoryBuilder、没有 SqlSession、没有 close()
-  Dao 直接 @Autowired 注入，业务代码零 MyBatis 依赖
+  Dao 直接 @Autowired 注入，Service 业务代码无需管理 MyBatis 会话
 ```
 
 这套整合配置在 SpringBoot 里会被进一步简化成**一个 starter 加几行 yml**——但底层做的事情和本案例完全一样，理解了这里，SpringBoot 的自动配置就不再是黑盒。
