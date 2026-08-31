@@ -501,6 +501,8 @@ public SqlSessionFactoryBean sqlSessionFactory(DataSource dataSource) {
 
 当前案例的 SQL 全写在注解中，方法返回类型也能直接推断，所以类型别名几乎没有显现出来；它主要是在使用 Mapper XML 时更有价值。
 
+`SqlSessionFactoryBean` 如何选择 `Configuration`、注册组件、建立 `Environment` 并创建 `DefaultSqlSessionFactory`，可继续阅读：[SqlSessionFactoryBean核心源码详解.md](SqlSessionFactoryBean核心源码详解.md)。
+
 ### 9.4 `MybatisConfig`：扫描 Mapper
 
 ```java

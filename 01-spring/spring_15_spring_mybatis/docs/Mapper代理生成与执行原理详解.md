@@ -208,6 +208,8 @@ public SqlSessionFactoryBean sqlSessionFactory(DataSource dataSource) {
 }
 ```
 
+这段配置在 `SqlSessionFactoryBean` 内部如何组装成最终工厂，可阅读：[SqlSessionFactoryBean核心源码详解.md](SqlSessionFactoryBean核心源码详解.md)。
+
 `SqlSessionFactoryBean` 最终向 Spring 容器提供 `SqlSessionFactory`。
 
 因为本案例没有给扫描器指定某个特定工厂，`MapperFactoryBean` 会按类型自动获得容器中的 `SqlSessionFactory`。
