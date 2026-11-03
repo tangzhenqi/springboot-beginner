@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- 仅用于聚合：让 IDEA 一次性识别所有章节下的 Maven 子工程，不参与依赖继承 -->
+    <groupId>com.beginner</groupId>
+    <artifactId>springboot-beginner</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>01-spring</module>
+        <module>02-springmvc</module>
+        <module>03-maven高级</module>
+        <module>04-springboot</module>
+        <module>05-mybatisplus</module>
+    </modules>
+</project>
